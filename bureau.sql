@@ -154,8 +154,8 @@ INSERT INTO article (art_num,art_nom,art_poids,art_coul,art_stock,art_pa,art_pv,
 INSERT INTO article (art_num,art_nom,art_poids,art_coul,art_stock,art_pa,art_pv,art_frs) VALUES ('A05','LAMPE',550,'BLANC',3,105,149,'F05');
 INSERT INTO article (art_num,art_nom,art_poids,art_coul,art_stock,art_pa,art_pv,art_frs) VALUES ('A06','LAMPE',550,'BLEU',3,105,149,'F05');
 INSERT INTO article (art_num,art_nom,art_poids,art_coul,art_stock,art_pa,art_pv,art_frs) VALUES ('A07','LAMPE',550,'VERT',3,105,149,'F05');
-INSERT INTO article (art_num,art_nom,art_poids,art_coul,art_stock,art_pa,art_pv,art_frs) VALUES ('A08','PESE-LETTRE 1-500', NULL,'NULL',2,120,200,'F03');
-INSERT INTO article (art_num,art_nom,art_poids,art_coul,art_stock,art_pa,art_pv,art_frs) VALUES ('A09','PESE-LETTRE 1-1000', NULL,'NULL',2,150,250,'F03');
+INSERT INTO article (art_num,art_nom,art_poids,art_coul,art_stock,art_pa,art_pv,art_frs) VALUES ('A08','PESE-LETTRE 1-500', NULL,NULL,2,120,200,'F03');
+INSERT INTO article (art_num,art_nom,art_poids,art_coul,art_stock,art_pa,art_pv,art_frs) VALUES ('A09','PESE-LETTRE 1-1000', NULL,NULL,2,150,250,'F03');
 INSERT INTO article (art_num,art_nom,art_poids,art_coul,art_stock,art_pa,art_pv,art_frs) VALUES ('A10','CRAYON',20,'ROUGE',210,1,2,'F02');
 INSERT INTO article (art_num,art_nom,art_poids,art_coul,art_stock,art_pa,art_pv,art_frs) VALUES ('A11','CRAYON',20,'BLEU',190,1,2,'F02');
 INSERT INTO article (art_num,art_nom,art_poids,art_coul,art_stock,art_pa,art_pv,art_frs) VALUES ('A12','CRAYON LUXE',20,'ROUGE',95,3,5,'F02');
@@ -319,14 +319,11 @@ INSERT INTO magasin (mag_num,mag_loc,mag_ger) VALUES ('M11','BRUXELLES','VANDERS
 INSERT INTO magasin (mag_num,mag_loc,mag_ger) VALUES ('M12','LIEGE','HANNEAU Vincent');
 
 
-
-
-
-
--- ajout des contraintes pour les clés étrangères
---ALTER TABLE chauffeur_vehicule ADD CONSTRAINT FK_chauffeur_vehicule_vehicule 
---	FOREIGN KEY (numVehicule) REFERENCES vehicule (numVehicule) 
---	;
+----------------------------------------------------------------------------------
+--
+--                      LES CONTRAINTES D'INTÉGRITÉ RÉFÉRENTIELLE
+--
+----------------------------------------------------------------------------------
 
 ALTER TABLE article  ADD  CONSTRAINT FK_article_fournisseur FOREIGN KEY(art_frs)
 REFERENCES fournisseur (frs_num)
@@ -353,7 +350,6 @@ GO
 
 ALTER TABLE lig_liv  ADD  CONSTRAINT FK_lig_liv_article FOREIGN KEY(llv_art)
 REFERENCES livraison (art_num)
-ON DELETE CASCADE
 GO
 
 ALTER TABLE lig_liv  ADD  CONSTRAINT FK_lig_liv_commande FOREIGN KEY(llv_cmd)
