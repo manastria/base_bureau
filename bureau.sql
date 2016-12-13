@@ -336,7 +336,7 @@ ON UPDATE CASCADE
 GO
 
 ALTER TABLE commande  ADD  CONSTRAINT FK_commande_magasin FOREIGN KEY(cmd_mag)
-REFERENCES client (mag_num)
+REFERENCES magasin (mag_num)
 GO
 
 ALTER TABLE lig_cmd  ADD  CONSTRAINT FK_lig_cmd_article FOREIGN KEY(lcd_art)
@@ -349,7 +349,8 @@ REFERENCES commande (cmd_num)
 GO
 
 ALTER TABLE lig_liv  ADD  CONSTRAINT FK_lig_liv_article FOREIGN KEY(llv_art)
-REFERENCES livraison (art_num)
+REFERENCES article (art_num)
+ON DELETE CASCADE
 GO
 
 ALTER TABLE lig_liv  ADD  CONSTRAINT FK_lig_liv_commande FOREIGN KEY(llv_cmd)
